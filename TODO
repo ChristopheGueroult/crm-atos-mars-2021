@@ -3,3 +3,7 @@
     ☐ Déplacer les routes signin, signup, reset, forgot sur login-routing.module.ts et faire en sorte qu'elle fonctionnent toujours
     ☐ Créer les components et les routes pour page list orders, page add order, page edit order
     ☐ Créer le component et la route pour page not found
+
+    ☐ @Input()
+    ☐ documentation
+    ☐ bundle analyzer
