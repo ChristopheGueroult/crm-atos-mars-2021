@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { StateOrder } from 'src/app/core/enums/state-order.enum';
 import { Order } from 'src/app/core/models/order';
 import { VersionService } from 'src/app/core/services/version.service';
 import { OrdersService } from '../../services/orders.service';
@@ -13,10 +14,12 @@ import { OrdersService } from '../../services/orders.service';
   styleUrls: ['./page-list-orders.component.scss'],
 })
 export class PageListOrdersComponent implements OnInit, OnDestroy {
+  public states = Object.values(StateOrder);
   /**
    * used to display collection tab in html
    */
-  public collection!: Order[];
+  // public collection!: Order[];
+  public collection$!: Observable<Order[]>;
   /**
    * used to display version number in page
    */
@@ -40,12 +43,13 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
   ];
   constructor(
     private ordersService: OrdersService,
-    private versionService: VersionService
+    private versionService: VersionService,
+    private ref: ChangeDetectorRef
   ) {
-    this.ordersService.collection.subscribe((data) => {
-      console.log(data);
-      this.collection = data;
-    });
+    this.collection$ = this.ordersService.collection;
+    // this.ordersService.collection.subscribe((data) => {
+    //   this.collection = data;
+    // });
     this.sub = this.versionService.v$.subscribe((data) => {
       this.version = data;
     });
@@ -61,6 +65,15 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
    */
   public changeTitle(): void {
     this.title = 'Liste des prestations';
+  }
+
+  public changeState(item: Order, event: any): void {
+    const state = event.target.value;
+    this.ordersService.changeState(item, state).subscribe((res) => {
+      item.state = res.state;
+      // lancer manuellement un change detection ici
+      this.ref.detectChanges();
+    });
   }
 
   ngOnDestroy(): void {

@@ -7,3 +7,18 @@
     ☐ @Input()
     ☐ documentation
     ☐ bundle analyzer
+
+    ☐ directive perso
+
+    ☐ tp clients
+    ☐ enum client (db.json)
+    ☐ interface client (db.json)
+    ☐ modele client (state ACTIVE , tva 20, totalCaHt 0)
+    ☐ le service client
+    ☐ page  list client ts
+    ☐ page list client html
+      ☐ app template full width
+      ☐ app table light
+        ☐ colones du tableau : name, total ht, total ttc (a calculer), state
+        ☐ utilisez le meme pipe total que sur orders pour calculer le total ttc des clients
+        ☐ utilisez la meme directive que sur les orders (scss : .state-active, .state-inactive)

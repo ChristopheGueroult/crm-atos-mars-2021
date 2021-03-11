@@ -1,4 +1,4 @@
-<app-template-fullwidth [title]="title" *ngIf="collection">
+<app-template-fullwidth [title]="title" *ngIf="collection$ | async as collection">
   <p>Version : {{ version }}</p>
   <button (click)="changeTitle()">Change Title</button>
   <app-table-light [headers]="headers">
@@ -6,10 +6,14 @@
       <td>{{ item.typePresta }}</td>
       <td>{{ item.client }}</td>
       <td>{{ item.nbJours }}</td>
-      <td>{{ item.tjmHt }}</td>
-      <td>{{ item.tjmHt | total: item.nbJours }}</td>
-      <td>{{ item.tjmHt | total: item.nbJours: item.tva }}</td>
-      <td>{{ item.state }}</td>
+      <td>{{ item.tjmHt | currency }}</td>
+      <td>{{ item.tjmHt | total: item.nbJours | currency }}</td>
+      <td>{{ item.tjmHt | total: item.nbJours: item.tva | currency }}</td>
+      <td [appState]="item.state">
+        <select (change)="changeState(item, $event)">
+          <option *ngFor="let state of states" [value]="state" [selected]="item.state === state">{{ state }}</option>
+        </select>
+      </td>
     </tr>
   </app-table-light>
 </app-template-fullwidth>
