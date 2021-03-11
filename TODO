@@ -1,24 +1,25 @@
-☐ TP ROUTER
-    ☐ Créez la route pour le lazy loading du module page not found
-    ☐ Déplacer les routes signin, signup, reset, forgot sur login-routing.module.ts et faire en sorte qu'elle fonctionnent toujours
-    ☐ Créer les components et les routes pour page list orders, page add order, page edit order
-    ☐ Créer le component et la route pour page not found
+✔ TP ROUTER @done(21-03-11 12:57)
+    ✔ Créez la route pour le lazy loading du module page not found @done(21-03-11 12:57)
+    ✔ Déplacer les routes signin, signup, reset, forgot sur login-routing.module.ts et faire en sorte qu'elle fonctionnent toujours @done(21-03-11 12:57)
+    ✔ Créer les components et les routes pour page list orders, page add order, page edit order @done(21-03-11 12:57)
+    ✔ Créer le component et la route pour page not found @done(21-03-11 12:57)
 
-    ☐ @Input()
-    ☐ documentation
+    ✔ @Input() @done(21-03-11 12:56)
+    ✔ documentation @done(21-03-11 12:56)
     ☐ bundle analyzer
+    ☐ btn and @Output()
 
-    ☐ directive perso
+    ✔ directive perso @done(21-03-11 12:56)
 
-    ☐ tp clients
-    ☐ enum client (db.json)
-    ☐ interface client (db.json)
-    ☐ modele client (state ACTIVE , tva 20, totalCaHt 0)
-    ☐ le service client
-    ☐ page  list client ts
-    ☐ page list client html
-      ☐ app template full width
-      ☐ app table light
-        ☐ colones du tableau : name, total ht, total ttc (a calculer), state
-        ☐ utilisez le meme pipe total que sur orders pour calculer le total ttc des clients
-        ☐ utilisez la meme directive que sur les orders (scss : .state-active, .state-inactive)
+    ✔ tp clients @done(21-03-11 12:57)
+    ✔ enum client (db.json) @done(21-03-11 12:57)
+    ✔ interface client (db.json) @done(21-03-11 12:57)
+    ✔ modele client (state ACTIVE , tva 20, totalCaHt 0) @done(21-03-11 12:57)
+    ✔ le service client @done(21-03-11 12:57)
+    ✔ page  list client ts @done(21-03-11 12:57)
+    ✔ page list client html @done(21-03-11 12:57)
+      ✔ app template full width @done(21-03-11 12:57)
+      ✔ app table light @done(21-03-11 12:57)
+        ✔ colones du tableau : name, total ht, total ttc (a calculer), state @done(21-03-11 12:57)
+        ✔ utilisez le meme pipe total que sur orders pour calculer le total ttc des clients @done(21-03-11 12:57)
+        ✔ utilisez la meme directive que sur les orders (scss : .state-active, .state-inactive) @done(21-03-11 12:57)

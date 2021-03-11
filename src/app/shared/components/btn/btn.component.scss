@@ -1,0 +1,15 @@
+a,
+button {
+  border: none;
+  margin-left: 10px;
+  color: var(--app-light);
+  display: inline-block;
+  padding: 1em;
+  font-size: var(--app-regular-fs);
+  background: var(--app-primary);
+  transition: all 0.5s;
+  &:hover {
+    text-decoration: none;
+    background: var(--app-primary-dark);
+  }
+}

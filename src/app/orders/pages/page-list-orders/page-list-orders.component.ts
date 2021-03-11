@@ -76,6 +76,10 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
     });
   }
 
+  public openPopup(): void {
+    console.log('popup opened');
+  }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }

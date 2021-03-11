@@ -1,1 +1,3 @@
-<p>btn works!</p>
+<a *ngIf="route" [routerLink]="route">{{ label }}</a>
+<a *ngIf="hrefLink" [href]="hrefLink">{{ label }}</a>
+<button *ngIf="action" (click)="doAction()">{{ label }}</button>
