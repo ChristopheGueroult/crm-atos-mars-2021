@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order.enum';
 import { Order } from 'src/app/core/models/order';
 import { VersionService } from 'src/app/core/services/version.service';
@@ -20,7 +20,7 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
    * used to display collection tab in html
    */
   // public collection!: Order[];
-  public collection$!: Observable<Order[]>;
+  public collection$: Subject<Order[]> = new Subject<Order[]>();
   /**
    * used to display version number in page
    */
@@ -51,7 +51,7 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
   ) {
     this.collection$ = this.ordersService.collection;
     // this.ordersService.collection.subscribe((data) => {
-    //   this.collection = data;
+    //   this.collection$.next(data);
     // });
     this.sub = this.versionService.v$.subscribe((data) => {
       this.version = data;
@@ -85,6 +85,15 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
 
   public goToEdit(item: Order): void {
     this.router.navigate(['orders', 'edit', item.id]);
+  }
+
+  public delete(id: number): void {
+    this.ordersService.delete(id).subscribe((res) => {
+      this.ordersService.refreshSubject();
+      // this.ordersService.collection.subscribe((data) => {
+      //   this.collection$.next(data);
+      // });
+    });
   }
 
   ngOnDestroy(): void {
