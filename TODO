@@ -23,3 +23,38 @@
         ✔ colones du tableau : name, total ht, total ttc (a calculer), state @done(21-03-11 12:57)
         ✔ utilisez le meme pipe total que sur orders pour calculer le total ttc des clients @done(21-03-11 12:57)
         ✔ utilisez la meme directive que sur les orders (scss : .state-active, .state-inactive) @done(21-03-11 12:57)
+
+        ☐ Validateurs
+        ☐ css pour les validators
+
+        ☐ tp edit order
+
+☐ page-list-orders.component.html
+    ☐ ajoute un td au debut d'un tr et on met un icon-edit dedans
+    ☐ (click)="goToEdit(item.id)"
+  ☐ page-list-orders.component.ts
+    ☐ Ajouter "Actions" en entête
+    ☐ Déclarer fa fn goToEdit(id: number):void et rediriger vers la route orders/edit/3
+    this.router.navigate(['orders', 'edit', id])
+  ☐ orders-routing.module.ts
+    ☐ modifier la route edit pour qu'elle autorise un paramètre id après le edit/
+
+  on arrive sur la route orders/edit/3
+  ☐ page-edit-order-component.ts
+    ☐ Récupérer l'id dans la route (ActivatedRoute)
+    ☐ this.ordersService.getItemById(id).subscribe(....flux etant votre item)
+    ☐ dans le subscribe() on recupère le flux et on initialise une propriété item: Order ou  (item$ : Observable<Order>);
+  ☐ orders.service.ts
+    ☐ Déclare la fn getItemById(id: number): Observable<Order>
+  ☐ page-edit-order.component.html
+    ☐ On utilise template-container component
+    ☐ On utilise form-order component : Binder l'@Input() init avec la propriété item (attention à la valeur d'item)
+    ☐ Pour l'@Output() (submited)="edit($event)"
+  ☐ page-edit-order.component.ts
+    ☐ Déclarer la fn edit(item: Order) {utliser this.ordersService.update(item).subscribe(ici res de l'api)}
+    ☐ Dans le subscribe, rediriger l'utilisateur vers la route orders
+
+        ☐ TP DELETE
+
+        ☐ EVALS ET M2ISIGN
+        ☐ CERTIF
