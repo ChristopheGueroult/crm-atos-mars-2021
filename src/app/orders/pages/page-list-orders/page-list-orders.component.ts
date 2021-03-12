@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order.enum';
 import { Order } from 'src/app/core/models/order';
@@ -33,6 +34,7 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
    */
   public title = 'List Orders';
   public headers = [
+    'Action',
     'Type',
     'Client',
     'Nb Jours',
@@ -44,7 +46,8 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
   constructor(
     private ordersService: OrdersService,
     private versionService: VersionService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private router: Router
   ) {
     this.collection$ = this.ordersService.collection;
     // this.ordersService.collection.subscribe((data) => {
@@ -78,6 +81,10 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
 
   public openPopup(): void {
     console.log('popup opened');
+  }
+
+  public goToEdit(item: Order): void {
+    this.router.navigate(['orders', 'edit', item.id]);
   }
 
   ngOnDestroy(): void {
